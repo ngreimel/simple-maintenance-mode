@@ -1,0 +1,23 @@
+# Customize what Apache returns to the client in case of an error.
+# http://httpd.apache.org/docs/current/mod/core.html#errordocument
+
+ErrorDocument 503 /503.html
+
+# Simple maintenance mode enabled by touching `.maintenance`
+
+<IfModule mod_rewrite.c>
+
+    RewriteEngine On
+
+    # You may need to set RewriteBase
+    # RewriteBase /
+
+    RewriteCond %{DOCUMENT_ROOT}/.maintenance -f
+    RewriteCond %{REQUEST_FILENAME} !503\.html
+
+    # Uncomment the line below to allow access from 127.0.0.1
+    # RewriteCond %{REMOTE_ADDR} !^127\.0\.0\.1$
+
+    RewriteRule .* - [R=503,L]
+
+</IfModule>
