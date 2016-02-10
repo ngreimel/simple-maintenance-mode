@@ -1,4 +1,14 @@
 # Simple Maintenance Mode
-A simple .htaccess rule to tell browsers that your site is currently undergoing maintenance
 
-Add this to your .htaccess and simply `touch .maintenance` in your DocumentRoot to enable maintenance mode. Remove the .maintenance file when you're done and the site will display normally.
+This simple .htaccess rule tells browsers that your site is currently
+undergoing maintenance. Turn maintenance mode **ON** by creating a file
+called `.maintenance`. Turn it off by removing the file.
+
+### Example
+
+```
+$ touch .maintenance
+$ git pull origin production
+$ rm .maintenance
+```
+
